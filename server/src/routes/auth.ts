@@ -21,7 +21,7 @@ router.post("/auth/login", async (req, res): Promise<void> => {
   res.cookie("auth_token", token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
-    sameSite: "strict",
+    sameSite: "none",
     maxAge: 7 * 24 * 60 * 60 * 1000,
   });
   res.json({ authenticated: true, user: { id: admin.id, email: admin.email } });
